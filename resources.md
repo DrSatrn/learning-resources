@@ -1,9 +1,11 @@
-General overview / intro to Computer Science
+# Resources I have collected over the years since my start in tech in November of 2021
 
-Learning to code
+## General overview / intro to Computer Science
 
-Infrastructure / Technology
+## Learning to code
 
-Misc and tools
+## Infrastructure / Technology
 
-Interview / Resume related
+## Misc and tools
+
+## Interview / Resume related
