@@ -1,1 +1,7 @@
-This is where all the learning resources will be stored and easily shareable
+General overview / intro to Computer Science
+
+Learning to code
+
+Infrastructure / Technology
+
+Misc and tools
