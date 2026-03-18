@@ -1,0 +1,42 @@
+# the actual cicd job that updates links.txt if triggered by validate.yml
+name: Sync links.txt
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - resources.md
+
+jobs:
+  sync-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update links.txt
+        run: python3 scripts/resource_tools.py sync-links
+
+      - name: Commit updated links.txt
+        run: |
+          if git diff --quiet -- links.txt; then
+            echo "links.txt is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add links.txt
+          git commit -m "Update links.txt"
+          git push
