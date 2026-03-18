@@ -1,4 +1,4 @@
 tmp*
-DS_Store
+.DS_Store
 learning-resources-bookmark.html
 __pycache__/
