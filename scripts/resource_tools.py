@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# This file has 4 separate jobs
+# 1. Parse resources.md and record incorrect syntax
+# 2. Extract valid linkes from resources.md and update links.txt if missing
+# 3. Generate an old school html browser bookmark import file (consumes links.txt)
+# 4. Test URLs in resources.md and report 404 and related errors
 
 from __future__ import annotations
 
