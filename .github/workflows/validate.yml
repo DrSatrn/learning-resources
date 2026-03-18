@@ -1,0 +1,33 @@
+# ci worlflow to extract resources.md links, validate and test, compare against links.txt and update if required
+name: Validate Resources
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate resources.md
+        run: python3 scripts/resource_tools.py validate-resources
+
+      - name: Refresh links.txt
+        run: python3 scripts/resource_tools.py sync-links
+
+      - name: Generate bookmarks export
+        run: python3 scripts/resource_tools.py export-bookmarks
+
+      - name: Check live links
+        run: python3 scripts/resource_tools.py check-links
