@@ -30,6 +30,7 @@ SKIPPED_STATUS_CODES = {401, 403, 405, 429}
 IGNORED_URLS = {
     "https://www.kaggle.com/code/dansbecker/getting-started-with-sql-and-bigquery/tutorial",
     "https://academy.tcm-sec.com/l/products?sortKey=name&sortDirection=asc&page=1",
+    "https://github.com/PanXProject/awesome-certificates",
 }
 
 
