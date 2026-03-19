@@ -27,6 +27,10 @@ DEFAULT_TIMEOUT_SECONDS = 15
 DEFAULT_RETRIES = 2
 USER_AGENT = "learning-resources-link-checker/1.0"
 SKIPPED_STATUS_CODES = {401, 403, 405, 429}
+IGNORED_URLS = {
+    "https://www.kaggle.com/code/dansbecker/getting-started-with-sql-and-bigquery/tutorial",
+    "https://academy.tcm-sec.com/l/products?sortKey=name&sortDirection=asc&page=1",
+}
 
 
 @dataclass(frozen=True)
@@ -325,6 +329,17 @@ def check_links_command(args: argparse.Namespace) -> int:
     skipped: list[LinkCheckResult] = []
 
     for url, line_numbers in url_to_lines.items():
+        if url in IGNORED_URLS:
+            skipped.append(
+                LinkCheckResult(
+                    url=url,
+                    status="skipped",
+                    detail="manually ignored",
+                    line_numbers=tuple(line_numbers),
+                )
+            )
+            continue
+
         result = check_single_link(url, tuple(line_numbers), retries=args.retries, timeout=args.timeout)
         if result.status == "failed":
             failures.append(result)
