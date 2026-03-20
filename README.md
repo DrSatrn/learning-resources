@@ -9,7 +9,7 @@ Like many others, I ran into the same problem: there is a massive amount of cont
 I wanted to collate the best resources I found and centralise them into a single, easily accessible place.
 
 Furthermore, I wanted a simple way to actually *use* the list.
-That’s where the bookmark exporter comes in — once you’ve trimmed the list down, you can import it into your browser and forget about it. Easy ;P
+That’s where the bookmark exporter comes in - once you’ve trimmed the list down, you can import it into your browser and forget about it. Easy ;P
 ## How it works
 `resources.md` is the master file, this is what I update with new links.
 
